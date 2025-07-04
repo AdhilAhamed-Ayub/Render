@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../config/api";
 
 const ManageUsers = () => {
   const { user } = useContext(AuthContext);
@@ -22,7 +23,7 @@ const ManageUsers = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/auth/users");
+      const res = await axios.get(`${API_URL}/api/auth/users`);
       setUsers(res.data);
       setError("");
     } catch (error) {
@@ -38,7 +39,7 @@ const ManageUsers = () => {
       return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/auth/users/email/${email}`);
+      await axios.delete(`${API_URL}/api/auth/users/email/${email}`);
 
       // Show success notification
       const notification = document.getElementById("notification");
