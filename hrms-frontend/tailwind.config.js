@@ -7,5 +7,9 @@ export default {
   theme: {
     extend: {},
   },
+  build: {
+    cssMinify: false,
+    chunkSizeWarningLimit: 1000, // Add this to skip CSS minify and avoid such warnings
+  },
   plugins: [],
 };
