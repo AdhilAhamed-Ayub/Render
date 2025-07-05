@@ -29,9 +29,7 @@ const EditUser = () => {
 
   const fetchUserDetails = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/auth/users/email/${email}`
-      );
+      const res = await axios.get(`${API_URL}/api/auth/users/email/${email}`);
       setUserData(res.data);
     } catch (error) {
       setError("Failed to fetch user details");
@@ -54,10 +52,7 @@ const EditUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(
-        `http://localhost:5000/api/auth/users/email/${email}`,
-        userData
-      );
+      await axios.put(`${API_URL}/api/auth/users/email/${email}`, userData);
       alert("User updated successfully!");
       navigate("/AdminDashboard/ManageUsers");
     } catch (error) {

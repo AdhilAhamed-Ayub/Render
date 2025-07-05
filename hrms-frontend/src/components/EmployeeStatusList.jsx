@@ -9,7 +9,7 @@ const EmployeeStatusList = () => {
     const fetchEmployees = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5000/api/auth/users");
+        const res = await axios.get(`${API_URL}/api/auth/users`);
         setEmployees(res.data);
       } catch (error) {
         console.error("Error fetching employee data:", error);

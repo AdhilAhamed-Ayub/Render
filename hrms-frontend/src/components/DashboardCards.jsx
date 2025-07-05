@@ -14,14 +14,11 @@ export default function DashboardCards() {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/auth/users/counts",
-          {
-            headers: {
-              "x-auth-token": user?.token,
-            },
-          }
-        );
+        const response = await axios.get(`${API_URL}/api/auth/users/counts`, {
+          headers: {
+            "x-auth-token": user?.token,
+          },
+        });
         setCounts(response.data);
       } catch (error) {
         console.error("Error fetching user counts:", error);

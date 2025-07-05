@@ -44,7 +44,7 @@ const AddUser = () => {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:5000/api/auth/users", userData, {
+      await axios.post(`${API_URL}/api/auth/users`, userData, {
         headers: {
           "Content-Type": "application/json",
         },

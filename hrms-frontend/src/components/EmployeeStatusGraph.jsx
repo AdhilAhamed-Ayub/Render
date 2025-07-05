@@ -18,7 +18,7 @@ const UserStatusGraph = () => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5000/api/auth/users");
+        const res = await axios.get(`${API_URL}/api/auth/users`);
         setUserData(res.data);
         setError(null);
       } catch (error) {

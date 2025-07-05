@@ -17,7 +17,7 @@ const Calendar = ({ token }) => {
   // Fetch events from API
   const fetchEvents = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/events", {
+      const response = await axios.get(`${API_URL}/api/events`, {
         headers: {
           "x-auth-token": user?.token,
         },
@@ -116,7 +116,7 @@ const Calendar = ({ token }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/events", {
+      const response = await fetch(`${API_URL}/api/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

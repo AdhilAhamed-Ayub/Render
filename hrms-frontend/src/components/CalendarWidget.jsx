@@ -10,7 +10,7 @@ const CalendarWidget = ({ token }) => {
     const fetchEvents = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/api/events", {
+        const response = await fetch(`${API_URL}/api/events`, {
           headers: {
             "Content-Type": "application/json",
             "x-auth-token": token,

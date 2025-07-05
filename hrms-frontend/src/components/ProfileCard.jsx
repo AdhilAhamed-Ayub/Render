@@ -19,7 +19,7 @@ const ProfileCard = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/auth/profile/${user.email}`,
+          `${API_URL}/api/auth/profile/${user.email}`,
           { headers: { "Content-Type": "application/json" } }
         );
         setProfile(response.data);

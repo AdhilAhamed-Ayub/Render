@@ -11,12 +11,9 @@ const EmployeeList = () => {
     const fetchUsers = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/auth/users",
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
+        const response = await axios.get(`${API_URL}/api/auth/users`, {
+          headers: { "Content-Type": "application/json" },
+        });
         setUsers(response.data);
         setError("");
       } catch (error) {

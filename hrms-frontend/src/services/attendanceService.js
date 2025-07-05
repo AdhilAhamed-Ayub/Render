@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // API Base URL
-const API_URL = "http://localhost:5000/api/attendance"; // Adjust this as needed
+const API_URL = `${API_URL}/api/attendance`; // Adjust this as needed
 
 // ✅ Check-in Function
 export const checkIn = async (emp_id) => {
@@ -41,9 +41,7 @@ export const getAllAttendance = async () => {
 
 export const getEmployeeAttendance = async (emp_id) => {
   try {
-    const res = await axios.get(
-      `http://localhost:5000/api/attendance/${emp_id}`
-    );
+    const res = await axios.get(`${API_URL}/api/attendance/${emp_id}`);
     return res.data;
   } catch (error) {
     console.error("Error fetching employee attendance:", error);
