@@ -1,14 +1,15 @@
 // services/attendanceService.js
 import axios from "axios";
 
-// API Base URL
-const API_URL = `${API_URL}/api/attendance`; // Adjust this as needed
+// ✅ Define the base URL first
+const BASE_URL = "http://localhost:5000"; // Or your actual backend URL
+const API_URL = `${BASE_URL}/api/attendance`;
 
 // ✅ Check-in Function
 export const checkIn = async (emp_id) => {
   try {
     const response = await axios.post(`${API_URL}/checkin`, { emp_id });
-    return response.data; // Returns the response data (success message, timestamp, etc.)
+    return response.data;
   } catch (error) {
     console.error("Check-in error:", error.response?.data || error.message);
     throw error;
@@ -26,6 +27,7 @@ export const checkOut = async (emp_id) => {
   }
 };
 
+// ✅ Get All Attendance
 export const getAllAttendance = async () => {
   try {
     const response = await axios.get(`${API_URL}/all`);
@@ -39,12 +41,16 @@ export const getAllAttendance = async () => {
   }
 };
 
+// ✅ Get Employee Attendance
 export const getEmployeeAttendance = async (emp_id) => {
   try {
-    const res = await axios.get(`${API_URL}/api/attendance/${emp_id}`);
-    return res.data;
+    const response = await axios.get(`${API_URL}/${emp_id}`);
+    return response.data;
   } catch (error) {
-    console.error("Error fetching employee attendance:", error);
+    console.error(
+      "Error fetching employee attendance:",
+      error.response?.data || error.message
+    );
     return [];
   }
 };
