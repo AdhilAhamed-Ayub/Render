@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
-
+const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000"; // Adjust the base URL as needed
+const API_URL = `${BASE_URL}/api/auth`;
 export default function DashboardCards() {
   const [counts, setCounts] = useState({
     totalUsers: 0,
@@ -14,7 +15,7 @@ export default function DashboardCards() {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/auth/users/counts`, {
+        const response = await axios.get(`${API_URL}/users/counts`, {
           headers: {
             "x-auth-token": user?.token,
           },

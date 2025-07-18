@@ -8,7 +8,8 @@ import {
   Legend,
   Tooltip,
 } from "recharts";
-
+const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000"; // Adjust the base URL as needed
+const API_URL = `${BASE_URL}/api/auth`;
 const UserStatusGraph = () => {
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +19,7 @@ const UserStatusGraph = () => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`${API_URL}/api/auth/users`);
+        const res = await axios.get(`${API_URL}/users`);
         setUserData(res.data);
         setError(null);
       } catch (error) {

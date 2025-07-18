@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import ManageUsers from "./ManageUser";
+const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000"; // Adjust the base URL as needed
+const API_URL = `${BASE_URL}/api/auth`;
 const EditUser = () => {
   const { user } = useContext(AuthContext);
   const { email } = useParams(); // Get email from URL params
@@ -29,7 +31,7 @@ const EditUser = () => {
 
   const fetchUserDetails = async () => {
     try {
-      const res = await axios.get(`${API_URL}/api/auth/users/email/${email}`);
+      const res = await axios.get(`${API_URL}/users/email/${email}`);
       setUserData(res.data);
     } catch (error) {
       setError("Failed to fetch user details");
@@ -52,7 +54,7 @@ const EditUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${API_URL}/api/auth/users/email/${email}`, userData);
+      await axios.put(`${API_URL}/users/email/${email}`, userData);
       alert("User updated successfully!");
       navigate("/AdminDashboard/ManageUsers");
     } catch (error) {

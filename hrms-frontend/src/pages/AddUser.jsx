@@ -2,7 +2,8 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000"; // Adjust the base URL as needed
+const API_URL = `${BASE_URL}/api/auth`;
 const AddUser = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const AddUser = () => {
 
     try {
       setLoading(true);
-      await axios.post(`${API_URL}/api/auth/users`, userData, {
+      await axios.post(`${API_URL}/users`, userData, {
         headers: {
           "Content-Type": "application/json",
         },

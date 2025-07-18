@@ -2,7 +2,8 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { FiUser, FiMail, FiBriefcase } from "react-icons/fi";
-
+const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000"; // Adjust the base URL as needed
+const API_URL = `${BASE_URL}/api/auth`;
 const ProfileCard = () => {
   const { user } = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
@@ -18,10 +19,9 @@ const ProfileCard = () => {
       }
 
       try {
-        const response = await axios.get(
-          `${API_URL}/api/auth/profile/${user.email}`,
-          { headers: { "Content-Type": "application/json" } }
-        );
+        const response = await axios.get(`${API_URL}/profile/${user.email}`, {
+          headers: { "Content-Type": "application/json" },
+        });
         setProfile(response.data);
       } catch (error) {
         console.error("Error fetching profile:", error);
