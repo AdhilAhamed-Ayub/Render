@@ -1,5 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  Users,
+  UserCheck,
+  UserX,
+  Search,
+  Filter,
+  MoreVertical,
+  Eye,
+  Edit,
+  Trash2,
+  Download,
+} from "lucide-react";
 const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000"; // Adjust the base URL as needed
 const API_URL = `${BASE_URL}/api/auth`;
 const EmployeeStatusList = () => {
@@ -17,6 +29,9 @@ const EmployeeStatusList = () => {
       } finally {
         setLoading(false);
       }
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000); // Simulate loading delay
     };
 
     fetchEmployees();
