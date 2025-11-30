@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000"; // Adjust the base URL as needed
-const API_URL = `${BASE_URL}/api/auth`;
+
 const EmployeeList = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
@@ -12,7 +11,7 @@ const EmployeeList = () => {
     const fetchUsers = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`${API_URL}/users`, {
+        const response = await axios.get(`${API_URL}/api/auth/users`, {
           headers: { "Content-Type": "application/json" },
         });
         setUsers(response.data);
